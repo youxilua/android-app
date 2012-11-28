@@ -13,12 +13,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.androidquery.AQuery;
 import com.youxilua.framework.action.ApiBaseAction;
 import com.youxilua.oschina.view.R;
+import com.youxilua.oschina.view.news.NewsListFragment;
 
 public class ActionBarAction extends ApiBaseAction implements
 		OnNavigationListener, TabListener {
@@ -40,6 +40,8 @@ public class ActionBarAction extends ApiBaseAction implements
 		
 		
 		
+		//actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+		
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		// For each of the sections in the app, add a tab to the action bar.
 				actionBar.addTab(actionBar.newTab().setText(na2[0])
@@ -48,6 +50,8 @@ public class ActionBarAction extends ApiBaseAction implements
 						.setTabListener(this));
 				actionBar.addTab(actionBar.newTab().setText(na2[2])
 						.setTabListener(this));
+				
+	
 		actionBar.setTitle("资讯");
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		//actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
@@ -64,13 +68,21 @@ public class ActionBarAction extends ApiBaseAction implements
 		// TODO Auto-generated method stub
 		// When the given dropdown item is selected, show its contents in the
 		// container view.
-		Fragment fragment = new DummySectionFragment();
-		Bundle args = new Bundle();
-		args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, itemPosition + 1);
-		fragment.setArguments(args);
-		getFragmentActivity().getSupportFragmentManager().beginTransaction()
-				.replace(R.id.container, fragment).commit();
+
 		
+		if(itemPosition == 1){
+			NewsListFragment nf = new NewsListFragment();
+			getFragmentActivity().getSupportFragmentManager().beginTransaction()
+			.replace(R.id.container, nf).commit();
+		}else{
+			Fragment fragment = new DummySectionFragment();
+			Bundle args = new Bundle();
+			args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, itemPosition + 1);
+			fragment.setArguments(args);
+			getFragmentActivity().getSupportFragmentManager().beginTransaction()
+					.replace(R.id.container, fragment).commit();
+		}
+//		
 		//没记错的默认是false,返回ture 是消费掉这个事件
 		return true;
 	}
@@ -100,6 +112,17 @@ public class ActionBarAction extends ApiBaseAction implements
 	@Override
 	public void onTabSelected(Tab tab, FragmentTransaction ft) {
 		// TODO Auto-generated method stub
+		switch (tab.getPosition()) {
+		case 0:
+			NewsListFragment nf = new NewsListFragment();
+			getFragmentActivity().getSupportFragmentManager().beginTransaction()
+			.replace(R.id.container, nf).commit();
+			break;
+
+		default:
+			break;
+		}
+	
 		
 	}
 
