@@ -472,7 +472,7 @@ public class NewsDetailsAction extends ApiBaseAction {
    				{
    					headButtonSwitch(DATA_LOAD_FAIL);
    					
-   					//UIHelper.ToastMessage(NewsDetail.this, R.string.msg_load_is_null);
+   					UIHelper.ToastMessage(getActivity(), R.string.msg_load_is_null);
    				}
    				else if(msg.what == -1 && msg.obj != null)
    				{
