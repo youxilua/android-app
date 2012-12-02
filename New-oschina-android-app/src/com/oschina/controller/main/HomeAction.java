@@ -1,4 +1,4 @@
-package com.oschina.controller;
+package com.oschina.controller.main;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;

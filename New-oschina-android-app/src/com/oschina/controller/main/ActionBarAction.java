@@ -1,4 +1,4 @@
-package com.oschina.controller;
+package com.oschina.controller.main;
 
 import android.app.ActionBar;
 import android.app.ActionBar.OnNavigationListener;

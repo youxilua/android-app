@@ -6,9 +6,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.androidquery.AQuery;
-import com.oschina.controller.ActionBarAction;
-import com.oschina.controller.HomeAction;
-import com.oschina.controller.MainAction;
+import com.oschina.controller.main.ActionBarAction;
+import com.oschina.controller.main.HomeAction;
+import com.oschina.controller.main.MainAction;
 import com.oschina.view.R;
 
 public class MainActivity extends FragmentActivity{

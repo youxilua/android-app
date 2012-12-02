@@ -1,4 +1,4 @@
-package com.oschina.controller;
+package com.oschina.controller.main;
 
 import com.oschina.view.R;
 import com.oschina.view.news.NewsDetailView;

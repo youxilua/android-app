@@ -1,6 +1,7 @@
 package com.youxilua.framework.action;
 
 import android.content.Context;
+import android.view.View;
 
 import com.androidquery.AQuery;
 import com.youxilua.framework.ApiBase;
@@ -16,6 +17,10 @@ public abstract class ApiBaseAction extends ApiBase{
 	public ApiBaseAction(Context ctx, AQuery aq) {
 		super(ctx);
 		this.mActionQuery = aq;
+	}
+	
+	public View findViewById(int id){
+		return mActionQuery.id(id).getView();
 	}
 
 	
