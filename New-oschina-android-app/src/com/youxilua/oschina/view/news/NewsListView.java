@@ -27,9 +27,10 @@ import android.widget.BaseAdapter;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.youxilua.oschina.controll.UIAction;
 import com.youxilua.oschina.view.R;
 
-public class NewsListFragment extends Fragment {
+public class NewsListView extends Fragment {
 	private Handler lvNewsHandler;
 	private ListViewNewsAdapter lvNewsAdapter;
 
@@ -56,7 +57,7 @@ public class NewsListFragment extends Fragment {
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
 		appContext = (AppContext) getActivity().getApplication();
-		initNewsListView();
+		initNewsList();
 
 	}
 
@@ -74,7 +75,7 @@ public class NewsListFragment extends Fragment {
 		}
 	}
 
-	private void initNewsListView() {
+	private void initNewsList() {
 		lvNewsAdapter = new ListViewNewsAdapter(getActivity(), lvNewsData,
 				R.layout.news_listitem);
 		lvNews_footer = getActivity().getLayoutInflater().inflate(
@@ -107,7 +108,11 @@ public class NewsListFragment extends Fragment {
 					return;
 
 				// 跳转到新闻详情
-				// UIHelper.showNewsRedirect(view.getContext(), news);
+				if(getActivity().getResources().getBoolean(R.bool.has_two_panes)){
+					UIAction.showNewsRedirect(getFragmentManager(), news);
+				}else{
+					UIAction.showNewsRedirect(view.getContext(), news);
+				}
 			}
 		});
 		lvNews.setOnScrollListener(new AbsListView.OnScrollListener() {

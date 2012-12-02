@@ -4,6 +4,7 @@ import com.androidquery.AQuery;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 
@@ -31,12 +32,15 @@ public abstract class ApiBase {
 		return new AQuery(getActivity());
 	}
 	
+	public Resources getResources(){
+		return getActivity().getResources();
+	}
+	
 	public FragmentActivity getFragmentActivity() {
 		if (mContext instanceof FragmentActivity) {
 			return (FragmentActivity) mContext;
 		} else {
-			new IllegalArgumentException("不是FragmentActivity");
-			return null;
+			throw new IllegalArgumentException("不是FragmentActivity");
 		}
 	}
 	

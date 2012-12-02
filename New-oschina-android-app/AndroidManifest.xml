@@ -29,6 +29,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <activity android:name="net.oschina.app.ui.NewsDetail" android:theme="@style/NoActionbarAppBaseTheme"></activity>
     </application>
 
 </manifest>

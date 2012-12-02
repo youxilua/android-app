@@ -24,7 +24,7 @@ public class MainActivity extends FragmentActivity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.route_main_layout);
 		barAction = new ActionBarAction(this, new AQuery(this));
 		barAction.mainActionBar();
 		homeAction = new HomeAction(this, new AQuery(this), R.layout.item_list_home);
