@@ -1,7 +1,7 @@
-package com.youxilua.oschina.controll;
+package com.oschina.controller;
 
-import com.youxilua.oschina.view.R;
-import com.youxilua.oschina.view.news.NewsDetailView;
+import com.oschina.view.R;
+import com.oschina.view.news.NewsDetailView;
 
 import net.oschina.app.bean.News;
 import net.oschina.app.common.StringUtils;

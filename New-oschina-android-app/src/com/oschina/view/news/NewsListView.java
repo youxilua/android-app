@@ -1,8 +1,6 @@
-package com.youxilua.oschina.view.news;
+package com.oschina.view.news;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import net.oschina.app.AppContext;
 import net.oschina.app.AppException;
@@ -27,8 +25,9 @@ import android.widget.BaseAdapter;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.youxilua.oschina.controll.UIAction;
-import com.youxilua.oschina.view.R;
+import com.oschina.controller.UIAction;
+import com.oschina.model.LvData;
+import com.oschina.view.R;
 
 public class NewsListView extends Fragment {
 	private Handler lvNewsHandler;
@@ -39,7 +38,6 @@ public class NewsListView extends Fragment {
 	private ProgressBar lvNews_foot_progress;
 	private PullToRefreshListView lvNews;
 
-	private List<News> lvNewsData = new ArrayList<News>();
 
 	private int lvNewsSumData;
 	private int curNewsCatalog = NewsList.CATALOG_ALL;
@@ -69,14 +67,14 @@ public class NewsListView extends Fragment {
 		lvNewsHandler = this.getLvHandler(lvNews, lvNewsAdapter,
 				lvNews_foot_more, lvNews_foot_progress, AppContext.PAGE_SIZE);
 		// 加载资讯数据
-		if (lvNewsData.isEmpty()) {
+		if (LvData.lvNewsData.isEmpty()) {
 			loadLvNewsData(curNewsCatalog, 0, lvNewsHandler,
 					UIHelper.LISTVIEW_ACTION_INIT);
 		}
 	}
 
 	private void initNewsList() {
-		lvNewsAdapter = new ListViewNewsAdapter(getActivity(), lvNewsData,
+		lvNewsAdapter = new ListViewNewsAdapter(getActivity(), LvData.lvNewsData,
 				R.layout.news_listitem);
 		lvNews_footer = getActivity().getLayoutInflater().inflate(
 				R.layout.listview_footer, null);
@@ -120,7 +118,7 @@ public class NewsListView extends Fragment {
 				lvNews.onScrollStateChanged(view, scrollState);
 
 				// 数据为空--不用继续下面代码了
-				if (lvNewsData.isEmpty())
+				if (LvData.lvNewsData.isEmpty())
 					return;
 
 				// 判断是否滚动到底部
@@ -274,10 +272,10 @@ public class NewsListView extends Fragment {
 						notice = nlist.getNotice();
 						lvNewsSumData = what;
 						if(actiontype == UIHelper.LISTVIEW_ACTION_REFRESH){
-							if(lvNewsData.size() > 0){
+							if(LvData.lvNewsData.size() > 0){
 								for(News news1 : nlist.getNewslist()){
 									boolean b = false;
-									for(News news2 : lvNewsData){
+									for(News news2 : LvData.lvNewsData){
 										if(news1.getId() == news2.getId()){
 											b = true;
 											break;
@@ -289,8 +287,8 @@ public class NewsListView extends Fragment {
 								newdata = what;
 							}
 						}
-						lvNewsData.clear();//先清除原有数据
-						lvNewsData.addAll(nlist.getNewslist());
+						LvData.lvNewsData.clear();//先清除原有数据
+						LvData.lvNewsData.addAll(nlist.getNewslist());
 						break;
 				}
 				if(actiontype == UIHelper.LISTVIEW_ACTION_REFRESH){
@@ -308,19 +306,19 @@ public class NewsListView extends Fragment {
 						NewsList list = (NewsList)obj;
 						notice = list.getNotice();
 						lvNewsSumData += what;
-						if(lvNewsData.size() > 0){
+						if(LvData.lvNewsData.size() > 0){
 							for(News news1 : list.getNewslist()){
 								boolean b = false;
-								for(News news2 : lvNewsData){
+								for(News news2 : LvData.lvNewsData){
 									if(news1.getId() == news2.getId()){
 										b = true;
 										break;
 									}
 								}
-								if(!b) lvNewsData.add(news1);
+								if(!b) LvData.lvNewsData.add(news1);
 							}
 						}else{
-							lvNewsData.addAll(list.getNewslist());
+							LvData.lvNewsData.addAll(list.getNewslist());
 						}
 						break;
 				}

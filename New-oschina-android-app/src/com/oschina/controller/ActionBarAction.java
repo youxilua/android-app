@@ -1,4 +1,4 @@
-package com.youxilua.oschina.controll;
+package com.oschina.controller;
 
 import android.app.ActionBar;
 import android.app.ActionBar.OnNavigationListener;
@@ -11,9 +11,9 @@ import android.widget.Toast;
 
 import com.androidquery.AQuery;
 import com.youxilua.framework.action.ApiBaseAction;
-import com.youxilua.oschina.view.R;
-import com.youxilua.oschina.view.news.NewsDetailView;
-import com.youxilua.oschina.view.news.NewsListView;
+import com.oschina.view.R;
+import com.oschina.view.news.NewsDetailView;
+import com.oschina.view.news.NewsListView;
 
 public class ActionBarAction extends ApiBaseAction implements
 		OnNavigationListener, TabListener {

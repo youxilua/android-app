@@ -1,4 +1,4 @@
-package com.youxilua.oschina.controll;
+package com.oschina.controller;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
@@ -11,7 +11,7 @@ import android.widget.FrameLayout;
 
 import com.androidquery.AQuery;
 import com.youxilua.framework.action.ApiBaseAction;
-import com.youxilua.oschina.view.R;
+import com.oschina.view.R;
 
 public class HomeAction extends ApiBaseAction {
 	private final static int HOMEINDEX = 0;

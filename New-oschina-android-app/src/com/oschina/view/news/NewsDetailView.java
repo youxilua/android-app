@@ -1,4 +1,4 @@
-package com.youxilua.oschina.view.news;
+package com.oschina.view.news;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -7,7 +7,7 @@ import java.util.List;
 import net.oschina.app.AppConfig;
 import net.oschina.app.AppContext;
 import net.oschina.app.AppException;
-import net.oschina.app.R;
+import com.oschina.view.R;
 import net.oschina.app.adapter.ListViewCommentAdapter;
 import net.oschina.app.bean.Comment;
 import net.oschina.app.bean.CommentList;

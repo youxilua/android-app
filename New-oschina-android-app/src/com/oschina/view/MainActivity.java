@@ -1,4 +1,4 @@
-package com.youxilua.oschina.view;
+package com.oschina.view;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -6,9 +6,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.androidquery.AQuery;
-import com.youxilua.oschina.controll.ActionBarAction;
-import com.youxilua.oschina.controll.HomeAction;
-import com.youxilua.oschina.controll.MainAction;
+import com.oschina.controller.ActionBarAction;
+import com.oschina.controller.HomeAction;
+import com.oschina.controller.MainAction;
+import com.oschina.view.R;
 
 public class MainActivity extends FragmentActivity{
 
