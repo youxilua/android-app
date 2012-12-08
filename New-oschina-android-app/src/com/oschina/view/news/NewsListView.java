@@ -26,5 +26,8 @@ public class NewsListView extends Fragment {
 		newsListAction = new NewsListAction(getActivity(), new AQuery(getView()));
 		newsListAction.initNewsList(R.id.frame_listview_news);
 	}
-
+	
+	
+	
+	
 }

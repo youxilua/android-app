@@ -6,7 +6,6 @@ import net.oschina.app.bean.News;
 import net.oschina.app.bean.NewsList;
 import net.oschina.app.bean.Notice;
 import net.oschina.app.common.UIHelper;
-import net.oschina.app.widget.NewDataToast;
 import net.oschina.app.widget.PullToRefreshListView;
 import android.os.Handler;
 import android.os.Message;
@@ -18,6 +17,8 @@ import com.oschina.model.LvData;
 import com.oschina.view.R;
 
 public class LvHanlderFactory {
+	
+	public final static int INITHEAD = 1;
 	/**
 	 * 获取listview的初始化Handler
 	 * 
@@ -42,9 +43,9 @@ public class LvHanlderFactory {
 						lv.setTag(UIHelper.LISTVIEW_DATA_MORE);
 						adapter.notifyDataSetChanged();
 						more.setText(R.string.load_more);
-
 					}
-
+				
+					
 				} else if (msg.what == -1) {
 					// 有异常--显示加载出错 & 弹出错误消息
 					lv.setTag(UIHelper.LISTVIEW_DATA_MORE);
@@ -59,10 +60,16 @@ public class LvHanlderFactory {
 				if (msg.arg1 == UIHelper.LISTVIEW_ACTION_REFRESH) {
 					lv.onRefreshComplete("最近更新："
 							+ new Date().toLocaleString());
-					lv.setSelection(0);
+					lv.requestFocusFromTouch();
+					lv.setSelection(INITHEAD);
+					
 				} else if (msg.arg1 == UIHelper.LISTVIEW_ACTION_CHANGE_CATALOG) {
 					lv.onRefreshComplete();
-					lv.setSelection(0);
+					lv.requestFocusFromTouch();
+					lv.setSelection(INITHEAD);
+				}else if(msg.arg1 == UIHelper.LISTVIEW_ACTION_INIT){
+					lv.requestFocusFromTouch();
+					lv.setSelection(INITHEAD);
 				}
 			}
 		};
