@@ -1,6 +1,7 @@
 package com.youxilua.framework.action;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import com.androidquery.AQuery;
@@ -21,6 +22,10 @@ public abstract class ApiBaseAction extends ApiBase{
 	
 	public View findViewById(int id){
 		return mActionQuery.id(id).getView();
+	}
+	
+	public LayoutInflater getLayoutInflater(){
+		return getActivity().getLayoutInflater();
 	}
 
 	

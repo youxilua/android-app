@@ -36,8 +36,7 @@ public class NewsListAction extends ApiBaseAction {
 	private TextView lvNews_foot_more;
 	private ProgressBar lvNews_foot_progress;
 	private PullToRefreshListView lvNews;
-
-	private int curNewsCatalog = NewsList.CATALOG_ALL;
+	public LvHanlderFactory LvHanlderFactory;
 
 	public int isCheckPosition = 0;
 	public LvLoadData lvLoadData;
@@ -45,6 +44,8 @@ public class NewsListAction extends ApiBaseAction {
 		super(ctx, aq);
 		// 初始化数据加载线程
 		lvLoadData = new LvLoadData(getActivity());
+		LvHanlderFactory = new LvHanlderFactory(ctx);
+		
 	}
 	
 	public void clearNewsListData(){
@@ -85,10 +86,14 @@ public class NewsListAction extends ApiBaseAction {
 				lvNews_foot_more, lvNews_foot_progress, AppContext.PAGE_SIZE);
 		// 加载资讯数据
 		if (LvData.lvNewsData.isEmpty()) {
-			lvLoadData.loadLvNewsData(curNewsCatalog, 0, lvNewsHandler,
+			lvLoadData.loadLvNewsData(NewsList.CATALOG_ALL, 0, lvNewsHandler,
 					UIHelper.LISTVIEW_ACTION_INIT);
+		}else{
+			lvLoadData.loadLvNewsData(NewsList.CATALOG_ALL, 0, lvNewsHandler, UIHelper.LISTVIEW_ACTION_CHANGE_CATALOG);
 		}
 	}
+	
+
 	private OnItemClickListener lvNewsItemClickListener = new AdapterView.OnItemClickListener() {
 		public void onItemClick(AdapterView<?> parent, View view,
 				int position, long id) {
@@ -117,7 +122,7 @@ public class NewsListAction extends ApiBaseAction {
 					isCheckPosition = position;
 				}
 			}else{
-				UIAction.showNewsRedirect(view.getContext(), news);
+				UIHelper.showNewsRedirect(view.getContext(), news);
 			}
 			lvNews.setItemChecked(lvNews.getCheckedItemPosition()-1, true);
 		}
@@ -148,7 +153,7 @@ public class NewsListAction extends ApiBaseAction {
 				lvNews_foot_progress.setVisibility(View.VISIBLE);
 				// 当前pageIndex
 				int pageIndex =LvData.lvNewsSumData / AppContext.PAGE_SIZE;
-				lvLoadData.loadLvNewsData(curNewsCatalog, pageIndex, lvNewsHandler,
+				lvLoadData.loadLvNewsData(NewsList.CATALOG_ALL, pageIndex, lvNewsHandler,
 						UIHelper.LISTVIEW_ACTION_SCROLL);
 			}
 		}
@@ -162,7 +167,7 @@ public class NewsListAction extends ApiBaseAction {
 	
 	private OnRefreshListener lvNewsPullListener = new PullToRefreshListView.OnRefreshListener() {
 		public void onRefresh() {
-			lvLoadData.loadLvNewsData(curNewsCatalog, 0, lvNewsHandler,
+			lvLoadData.loadLvNewsData(NewsList.CATALOG_ALL, 0, lvNewsHandler,
 					UIHelper.LISTVIEW_ACTION_REFRESH);
 		}
 	};

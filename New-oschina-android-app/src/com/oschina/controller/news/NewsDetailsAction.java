@@ -22,19 +22,16 @@ import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
 import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.ViewSwitcher;
 
 import com.androidquery.AQuery;
 import com.oschina.controller.data.LvLoadData;
@@ -55,12 +52,8 @@ public class NewsDetailsAction extends ApiBaseAction {
 	private WebView mWebView;
 	private Handler mHandler;
 	
-	 private ViewSwitcher mViewSwitcher;
 
-	private ViewSwitcher mFootViewSwitcher;
-	private Button mFootPubcomment;
-	private ImageView mFootEditebox;
-	private EditText mFootEditer;
+
 	private InputMethodManager imm;
 	
     private int curId;
@@ -302,13 +295,14 @@ public class NewsDetailsAction extends ApiBaseAction {
     }
 
 	public void initView(int newsId) {
+		//----预留一个判断是否是 平板的接口
+		mActionQuery.id(R.id.news_detail_header).gone();
+		
+		//---
 		this.newsId = newsId;
 		if (newsId > 0)
 			tempCommentKey = AppConfig.TEMP_COMMENT + "_"
 					+ CommentList.CATALOG_NEWS + "_" + newsId;
-		mViewSwitcher = (ViewSwitcher) mActionQuery.id(R.id.news_detail_viewswitcher).getView();
-		// 设置详情不可点击
-		mActionQuery.id(R.id.news_detail_footbar_detail).enabled(false);
 
 		mWebView = mActionQuery.id(R.id.news_detail_webview).getWebView();
 		mWebView.getSettings().setJavaScriptEnabled(false);
@@ -323,10 +317,7 @@ public class NewsDetailsAction extends ApiBaseAction {
 		setViewListenerById(R.id.news_detail_refresh, refreshClickListener);
 		setViewListenerById(R.id.news_detail_author, authorClickListener);
 		setViewListenerById(R.id.news_detail_footbar_share, shareClickListener);
-		setViewListenerById(R.id.news_detail_footbar_detail,
-				detailClickListener);
-		setViewListenerById(R.id.news_detail_footbar_commentlist,
-				commentlistClickListener);
+	
 		// ---
 		bv_comment = new BadgeView(getActivity(), mActionQuery.id(
 				R.id.news_detail_footbar_commentlist).getView());
@@ -339,41 +330,7 @@ public class NewsDetailsAction extends ApiBaseAction {
 		imm = (InputMethodManager) getActivity().getSystemService(
 				Activity.INPUT_METHOD_SERVICE);
 
-		mFootViewSwitcher = (ViewSwitcher) findViewById(R.id.news_detail_foot_viewswitcher);
-		mFootPubcomment = (Button) findViewById(R.id.news_detail_foot_pubcomment);
-		// mFootPubcomment.setOnClickListener(commentpubClickListener);
-		mFootEditebox = (ImageView) findViewById(R.id.news_detail_footbar_editebox);
-		mFootEditebox.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				mFootViewSwitcher.showNext();
-				mFootEditer.setVisibility(View.VISIBLE);
-				mFootEditer.requestFocus();
-				mFootEditer.requestFocusFromTouch();
-			}
-		});
-		mFootEditer = (EditText) findViewById(R.id.news_detail_foot_editer);
-		mFootEditer.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-			public void onFocusChange(View v, boolean hasFocus) {
-				if (hasFocus) {
-					imm.showSoftInput(v, 0);
-				} else {
-					imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-				}
-			}
-		});
-		mFootEditer.setOnKeyListener(new View.OnKeyListener() {
-			public boolean onKey(View v, int keyCode, KeyEvent event) {
-				if (keyCode == KeyEvent.KEYCODE_BACK) {
-					if (mFootViewSwitcher.getDisplayedChild() == 1) {
-						mFootViewSwitcher.setDisplayedChild(0);
-						mFootEditer.clearFocus();
-						mFootEditer.setVisibility(View.GONE);
-					}
-					return true;
-				}
-				return false;
-			}
-		});
+	
 		// TODO
 		// 编辑器添加文本监听
 		// mFootEditer.addTextChangedListener(UIHelper.getTextWatcher(getActivity(),
@@ -567,46 +524,8 @@ public class NewsDetailsAction extends ApiBaseAction {
 		}
 	};
 
-	private View.OnClickListener detailClickListener = new View.OnClickListener() {
-		public void onClick(View v) {
-			if (newsId == 0) {
-				return;
-			}
-			// 切换到详情
-			 viewSwitch(VIEWSWITCH_TYPE_DETAIL);
-		}
-	};
 
-	private View.OnClickListener commentlistClickListener = new View.OnClickListener() {
-		public void onClick(View v) {
-			if (newsId == 0) {
-				return;
-			}
-			// 切换到评论
-			 viewSwitch(VIEWSWITCH_TYPE_COMMENTS);
-		}
-	};
 	
 	
-	/**
-     * 底部栏切换
-     * @param type
-     */
-    private void viewSwitch(int type) {
-    	switch (type) {
-		case VIEWSWITCH_TYPE_DETAIL:
-			// 设置详情不可点击
-			mActionQuery.id(R.id.news_detail_footbar_detail).enabled(false);
-			mActionQuery.id(R.id.news_detail_footbar_commentlist).enabled(true);
-			mActionQuery.id(R.id.news_detail_head_title).text(R.string.news_detail_head_title);
-			mViewSwitcher.setDisplayedChild(0);			
-			break;
-		case VIEWSWITCH_TYPE_COMMENTS:
-			mActionQuery.id(R.id.news_detail_footbar_detail).enabled(true);
-			mActionQuery.id(R.id.news_detail_footbar_commentlist).enabled(false);
-			mActionQuery.id(R.id.news_detail_head_title).text(R.string.comment_list_head_title);
-			mViewSwitcher.setDisplayedChild(1);
-			break;
-    	}
-    }
+
 }

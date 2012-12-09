@@ -6,11 +6,13 @@ import android.app.ActionBar.Tab;
 import android.app.ActionBar.TabListener;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.support.v4.app.Fragment;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.androidquery.AQuery;
 import com.oschina.view.R;
+import com.oschina.view.blogs.BlogsListView;
 import com.oschina.view.news.NewsListView;
 import com.youxilua.framework.action.ApiBaseAction;
 
@@ -51,14 +53,14 @@ public class ActionBarAction extends ApiBaseAction implements
 		actionBar.setDisplayHomeAsUpEnabled(true);
 
 	}
-
+	private final static int NEWS = 0;
+	private final static int BLOGS = 1;
 	@Override
 	public boolean onNavigationItemSelected(int itemPosition, long itemId) {
-		if (itemPosition == 0) {
-			setFragment();
-		} else {
-			Toast.makeText(getActivity(), "正在开发中", Toast.LENGTH_SHORT).show();
-		}
+	
+			setFragment(itemPosition);
+
+	
 		//
 		// 没记错的默认是false,返回ture 是消费掉这个事件
 		return true;
@@ -67,13 +69,9 @@ public class ActionBarAction extends ApiBaseAction implements
 	@Override
 	public void onTabSelected(Tab tab, FragmentTransaction ft) {
 		// TODO Auto-generated method stub
-		switch (tab.getPosition()) {
-		case 0:
-			setFragment();
-			break;
-		default:
-			break;
-		}
+	
+			setFragment(tab.getPosition());
+		
 
 	}
 
@@ -81,17 +79,25 @@ public class ActionBarAction extends ApiBaseAction implements
 		return getResources().getBoolean(R.bool.has_two_panes);
 	}
 
-	public void setFragment() {
-		NewsListView nf = new NewsListView();
-		if (hasTwoPanes()) {
-			getFragmentActivity().getSupportFragmentManager()
-					.beginTransaction().replace(R.id.container_list, nf)
-					.commit();
-		} else {
-			getFragmentActivity().getSupportFragmentManager()
-					.beginTransaction().replace(R.id.container_list, nf)
-					.commit();
+	public void setFragment(int pos) {
+		Fragment list = null;;
+		switch (pos) {
+		case NEWS:
+			list = new NewsListView();
+			break;
+		case BLOGS:
+			list = new BlogsListView();
+			break;
+		default:
+			break;
 		}
+		if(list != null){
+			getFragmentActivity().getSupportFragmentManager()
+			.beginTransaction().replace(R.id.container_list, list)
+			.commit();
+		}
+	
+	
 	}
 
 	@Override
