@@ -25,11 +25,11 @@ public final class R {
 		public static final int software_detail_scrollview = 0x7f0e0110;
 		public static final int user_info_jointime = 0x7f0e0175;
 		public static final int search_listitem_title = 0x7f0e0106;
-		public static final int blog_detail_webview = 0x7f0e0014;
+		public static final int blog_detail_webview = 0x7f0e0015;
 		public static final int imagezoomdialog_image = 0x7f0e0073;
 		public static final int message_forward_content = 0x7f0e00a8;
 		public static final int software_detail_os = 0x7f0e011b;
-		public static final int blog_detail_title = 0x7f0e0010;
+		public static final int blog_detail_title = 0x7f0e0011;
 		public static final int software_detail_os_iv = 0x7f0e0119;
 		public static final int user_center_latestonline = 0x7f0e0151;
 		public static final int comment_list_head_title = 0x7f0e0034;
@@ -38,7 +38,7 @@ public final class R {
 		public static final int software_detail_refresh = 0x7f0e010f;
 		public static final int search_catalog_blog = 0x7f0e0102;
 		public static final int user_info_fans = 0x7f0e0174;
-		public static final int blog_detail_documentType = 0x7f0e000f;
+		public static final int blog_detail_documentType = 0x7f0e0010;
 		public static final int search_editer = 0x7f0e00fc;
 		public static final int main_footbar_tweet = 0x7f0e008a;
 		public static final int login_loading = 0x7f0e0084;
@@ -59,7 +59,7 @@ public final class R {
 		public static final int main_footbar_news = 0x7f0e0088;
 		public static final int main_head_pub_post = 0x7f0e0092;
 		public static final int content = 0x7f0e00bc;
-		public static final int blog_detail_commentcount = 0x7f0e0013;
+		public static final int blog_detail_commentcount = 0x7f0e0014;
 		public static final int user_center_username = 0x7f0e014a;
 		public static final int question_detail_webview = 0x7f0e00dc;
 		public static final int feedback_scrollview = 0x7f0e003a;
@@ -74,7 +74,7 @@ public final class R {
 		public static final int main_head_title = 0x7f0e008f;
 		public static final int software_detail_document = 0x7f0e011f;
 		public static final int logindialog_space = 0x7f0e007b;
-		public static final int blog_detail_footbar_favorite = 0x7f0e001a;
+		public static final int blog_detail_footbar_favorite = 0x7f0e001b;
 		public static final int software_detail_license = 0x7f0e0115;
 		public static final int comment_listitem_relies = 0x7f0e002d;
 		public static final int user_center_from = 0x7f0e014c;
@@ -89,7 +89,7 @@ public final class R {
 		public static final int question_detail_footbar_favorite = 0x7f0e00e2;
 		public static final int comment_pub_publish = 0x7f0e0035;
 		public static final int tweet_listitem_userface = 0x7f0e0125;
-		public static final int blog_detail_viewswitcher = 0x7f0e000d;
+		public static final int blog_detail_viewswitcher = 0x7f0e000e;
 		public static final int news_detail_commentcount = 0x7f0e00b9;
 		public static final int friend_listitem_expertise = 0x7f0e0063;
 		public static final int frame_btn_question_job = 0x7f0e004d;
@@ -99,7 +99,7 @@ public final class R {
 		public static final int news_detail_title = 0x7f0e00b6;
 		public static final int friend_listview = 0x7f0e0167;
 		public static final int software_detail_back = 0x7f0e010c;
-		public static final int blog_detail_footer = 0x7f0e0015;
+		public static final int blog_detail_footer = 0x7f0e0016;
 		public static final int blog_detail_refresh = 0x7f0e0022;
 		public static final int software_listitem_name = 0x7f0e0120;
 		public static final int frame_software_listview_catalog = 0x7f0e0059;
@@ -107,7 +107,7 @@ public final class R {
 		public static final int tweet_detail_refresh = 0x7f0e0134;
 		public static final int software_detail_download = 0x7f0e011e;
 		public static final int user_center_head_progress = 0x7f0e0157;
-		public static final int blog_detail_footbar_commentlist = 0x7f0e0019;
+		public static final int blog_detail_footbar_commentlist = 0x7f0e001a;
 		public static final int main_footbar_setting = 0x7f0e008c;
 		public static final int user_info_refresh = 0x7f0e0169;
 		public static final int news_detail_footbar_share = 0x7f0e00c7;
@@ -145,7 +145,7 @@ public final class R {
 		public static final int message_forward_receiver = 0x7f0e00a7;
 		public static final int feedback_publish = 0x7f0e003c;
 		public static final int user_center_footbar_message = 0x7f0e0153;
-		public static final int blog_detail_foot_editer = 0x7f0e001c;
+		public static final int blog_detail_foot_editer = 0x7f0e001d;
 		public static final int comment_listitem_date = 0x7f0e002f;
 		public static final int friend_ll = 0x7f0e0164;
 		public static final int head_tipsTextView = 0x7f0e00d4;
@@ -165,7 +165,7 @@ public final class R {
 		public static final int messagedetail_listitem_contentll = 0x7f0e00a0;
 		public static final int main_head_progress = 0x7f0e0090;
 		public static final int imagedialog_image = 0x7f0e006f;
-		public static final int blog_detail_foot_viewswitcher = 0x7f0e0016;
+		public static final int blog_detail_foot_viewswitcher = 0x7f0e0017;
 		public static final int imagezoomdialog_view_switcher = 0x7f0e0071;
 		public static final int question_pub_email = 0x7f0e00f3;
 		public static final int question_detail_commentcount = 0x7f0e00db;
@@ -191,7 +191,7 @@ public final class R {
 		public static final int comment_refer_body = 0x7f0e0037;
 		public static final int favorite_catalog_news = 0x7f0e0160;
 		public static final int frame_btn_question_share = 0x7f0e004b;
-		public static final int blog_detail_scrollview = 0x7f0e000e;
+		public static final int blog_detail_scrollview = 0x7f0e000f;
 		public static final int search_catalog_software = 0x7f0e0100;
 		public static final int news_listitem_author = 0x7f0e00ce;
 		public static final int tweet_listitem_date = 0x7f0e0129;
@@ -234,7 +234,7 @@ public final class R {
 		public static final int news_detail_footer = 0x7f0e00bb;
 		public static final int message_detail_header = 0x7f0e009a;
 		public static final int about_version = 0x7f0e0000;
-		public static final int blog_detail_header = 0x7f0e001e;
+		public static final int blog_detail_header = 0x7f0e000d;
 		public static final int user_info_username = 0x7f0e016d;
 		public static final int question_listitem_author = 0x7f0e00ed;
 		public static final int comment_listitem_refers = 0x7f0e002b;
@@ -264,7 +264,7 @@ public final class R {
 		public static final int messagedetail_listitem_username = 0x7f0e00a1;
 		public static final int frame_btn_question_ask = 0x7f0e004a;
 		public static final int tweet_detail_foot_faces = 0x7f0e0130;
-		public static final int blog_detail_date = 0x7f0e0012;
+		public static final int blog_detail_date = 0x7f0e0013;
 		public static final int feedback_close_button = 0x7f0e003d;
 		public static final int update_progress = 0x7f0e0144;
 		public static final int tweet_listitem_commentCount = 0x7f0e012a;
@@ -272,8 +272,8 @@ public final class R {
 		public static final int friend_listitem_userface = 0x7f0e0060;
 		public static final int comment_reply_content = 0x7f0e0038;
 		public static final int active_listitem_redirect = 0x7f0e000a;
-		public static final int blog_detail_footbar_detail = 0x7f0e0018;
-		public static final int blog_detail_footbar_share = 0x7f0e001b;
+		public static final int blog_detail_footbar_detail = 0x7f0e0019;
+		public static final int blog_detail_footbar_share = 0x7f0e001c;
 		public static final int question_listitem_userface = 0x7f0e00eb;
 		public static final int frame_btn_question_site = 0x7f0e004e;
 		public static final int news_listitem_commentCount = 0x7f0e00d0;
@@ -282,7 +282,7 @@ public final class R {
 		public static final int tweet_pub_form = 0x7f0e0137;
 		public static final int tweet_detail_foot_editer = 0x7f0e012e;
 		public static final int frame_listview_blog = 0x7f0e0049;
-		public static final int blog_detail_foot_pubcomment = 0x7f0e001d;
+		public static final int blog_detail_foot_pubcomment = 0x7f0e001e;
 		public static final int question_detail_viewswitcher = 0x7f0e00d6;
 		public static final int blog_listitem_title = 0x7f0e0024;
 		public static final int tweet_pub_clearwords = 0x7f0e013a;
@@ -330,7 +330,7 @@ public final class R {
 		public static final int user_info_editer = 0x7f0e016e;
 		public static final int login_btn_login = 0x7f0e0083;
 		public static final int frame_listview_active = 0x7f0e0044;
-		public static final int blog_detail_footbar_editebox = 0x7f0e0017;
+		public static final int blog_detail_footbar_editebox = 0x7f0e0018;
 		public static final int imagedialog_close_button = 0x7f0e0070;
 		public static final int message_listitem_messageCount = 0x7f0e00ad;
 		public static final int frame_btn_tweet_my = 0x7f0e005e;
@@ -358,7 +358,7 @@ public final class R {
 		public static final int message_pub_publish = 0x7f0e00af;
 		public static final int question_detail_header = 0x7f0e00e6;
 		public static final int frame_listview_message = 0x7f0e0045;
-		public static final int blog_detail_author = 0x7f0e0011;
+		public static final int blog_detail_author = 0x7f0e0012;
 		public static final int messagedetail_listitem_userface2 = 0x7f0e00a4;
 		public static final int messagedetail_listitem_userface1 = 0x7f0e009f;
 		public static final int user_center_refresh = 0x7f0e0158;

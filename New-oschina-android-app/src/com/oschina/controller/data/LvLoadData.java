@@ -9,9 +9,6 @@ import net.oschina.app.common.UIHelper;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import android.widget.ProgressBar;
-
-import com.oschina.model.LvData;
 
 public class LvLoadData {
 	

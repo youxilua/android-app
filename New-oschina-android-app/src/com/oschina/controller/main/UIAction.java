@@ -1,11 +1,13 @@
 package com.oschina.controller.main;
 
 import net.oschina.app.bean.News;
+import net.oschina.app.bean.URLs;
 import net.oschina.app.common.StringUtils;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 
 import com.oschina.view.R;
+import com.oschina.view.blogs.BlogDetailView;
 import com.oschina.view.news.NewsDetailView;
 
 public class UIAction {
@@ -33,8 +35,38 @@ public class UIAction {
 				showBlogDetail(fm, StringUtils.toInt(objId));
 				break;	
 			}
+		}else {
+			showUrlRedirect(fm, url);
 		}
 	}
+	
+	public static void showLinkRedirect(FragmentManager fm, int objType, int objId, String objKey){
+		switch (objType) {
+			case URLs.URL_OBJ_TYPE_NEWS:
+				showNewsDetail(fm, objId);
+				break;
+			case URLs.URL_OBJ_TYPE_BLOG:
+				showBlogDetail(fm, objId);
+				break;
+			
+		}
+	}
+	
+	/**
+	 * url跳转
+	 * @param context
+	 * @param url
+	 */
+	public static void showUrlRedirect(FragmentManager fm, String url){
+		URLs urls = URLs.parseURL(url);
+		if(urls != null){
+			showLinkRedirect(fm, urls.getObjType(), urls.getObjId(), urls.getObjKey());
+		}else{
+			//openBrowser(context, url);
+		}
+	}
+	
+	
 	
 	/**
 	 * 显示博客详情
@@ -46,6 +78,12 @@ public class UIAction {
 //		Intent intent = new Intent(context, BlogDetail.class);
 //		intent.putExtra("blog_id", blogId);
 //		context.startActivity(intent);
+		Bundle b = new Bundle();
+		b.putInt("blog_id", blogId);
+		BlogDetailView n2 = new BlogDetailView();
+		n2.setArguments(b);
+
+		fm.beginTransaction().replace(R.id.container, n2).commit();
 	}
 
 	/**

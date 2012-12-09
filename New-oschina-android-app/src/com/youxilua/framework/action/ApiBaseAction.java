@@ -1,5 +1,6 @@
 package com.youxilua.framework.action;
 
+import android.app.Application;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,10 @@ public abstract class ApiBaseAction extends ApiBase{
 	
 	public LayoutInflater getLayoutInflater(){
 		return getActivity().getLayoutInflater();
+	}
+	
+	public Application getApplication(){
+		return getActivity().getApplication();
 	}
 
 	

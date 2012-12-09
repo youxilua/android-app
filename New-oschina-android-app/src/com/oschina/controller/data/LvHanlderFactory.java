@@ -231,8 +231,5 @@ public class LvHanlderFactory extends Handler{
 
 	// ----------------
 
-	private void setBlogData() {
-
-	}
 
 }
