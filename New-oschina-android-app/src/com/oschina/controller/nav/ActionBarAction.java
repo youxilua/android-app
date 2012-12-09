@@ -1,14 +1,15 @@
 package com.oschina.controller.nav;
 
+import net.oschina.app.bean.BlogList;
 import android.app.ActionBar;
 import android.app.ActionBar.OnNavigationListener;
 import android.app.ActionBar.Tab;
 import android.app.ActionBar.TabListener;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.widget.ArrayAdapter;
-import android.widget.Toast;
 
 import com.androidquery.AQuery;
 import com.oschina.view.R;
@@ -54,7 +55,8 @@ public class ActionBarAction extends ApiBaseAction implements
 
 	}
 	private final static int NEWS = 0;
-	private final static int BLOGS = 1;
+	private final static int LATESTBLOGS = 1;
+	private final static int RECOMMENDBLOGS = 2;
 	@Override
 	public boolean onNavigationItemSelected(int itemPosition, long itemId) {
 	
@@ -85,8 +87,17 @@ public class ActionBarAction extends ApiBaseAction implements
 		case NEWS:
 			list = new NewsListView();
 			break;
-		case BLOGS:
+		case LATESTBLOGS:
+			Bundle latest = new Bundle();
+			latest.putInt("category", BlogList.CATALOG_LATEST);
 			list = new BlogsListView();
+			list.setArguments(latest);
+			break;
+		case RECOMMENDBLOGS:
+			Bundle recommend = new Bundle();
+			recommend.putInt("category", BlogList.CATALOG_RECOMMEND);
+			list = new BlogsListView();
+			list.setArguments(recommend);
 			break;
 		default:
 			break;

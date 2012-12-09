@@ -91,7 +91,7 @@ public class BlogListAction extends ApiBaseAction {
 	
 	private OnRefreshListener lvBlogRefreshListener = new PullToRefreshListView.OnRefreshListener() {
 		public void onRefresh() {
-			lvLoadData.loadLvBlogData(BlogList.CATALOG_LATEST, 0,
+			lvLoadData.loadLvBlogData(lvCurrentCategory, 0,
 					lvBlogHandler, UIHelper.LISTVIEW_ACTION_REFRESH);
 		}
 	};
@@ -121,7 +121,7 @@ public class BlogListAction extends ApiBaseAction {
 				lvBlog_foot_progress.setVisibility(View.VISIBLE);
 				// 当前pageIndex
 				int pageIndex = LvData.lvBlogSumData / AppContext.PAGE_SIZE;
-				lvLoadData.loadLvBlogData(BlogList.CATALOG_LATEST, pageIndex,
+				lvLoadData.loadLvBlogData(lvCurrentCategory, pageIndex,
 						lvBlogHandler, UIHelper.LISTVIEW_ACTION_SCROLL);
 			}
 		}
@@ -167,10 +167,14 @@ public class BlogListAction extends ApiBaseAction {
 		}
 	};
 	
+	
+	private int lvCurrentCategory = BlogList.CATALOG_LATEST;
 	/**
 	 * 初始化博客列表
 	 */
-	public void initBlogListView(int lvId) {
+	public void initBlogListView(int lvId,int blogCategory) {
+		lvCurrentCategory = blogCategory;
+		
 		lvBlogAdapter = new ListViewBlogAdapter(getActivity(),
 				BlogList.CATALOG_LATEST, LvData.lvBlogData,
 				R.layout.blog_listitem);
@@ -201,10 +205,10 @@ public class BlogListAction extends ApiBaseAction {
 		lvBlogHandler = LvHanlderFactory.getLvHandler(lvBlog, lvBlogAdapter,
 				lvBlog_foot_more, lvBlog_foot_progress, AppContext.PAGE_SIZE);
 		if (LvData.lvBlogData.isEmpty()) {
-			lvLoadData.loadLvBlogData(BlogList.CATALOG_LATEST, 0, lvBlogHandler,
+			lvLoadData.loadLvBlogData(lvCurrentCategory, 0, lvBlogHandler,
 					UIHelper.LISTVIEW_ACTION_INIT);
 		}else{
-			lvLoadData.loadLvBlogData(BlogList.CATALOG_LATEST, 0, lvBlogHandler,
+			lvLoadData.loadLvBlogData(lvCurrentCategory, 0, lvBlogHandler,
 					UIHelper.LISTVIEW_ACTION_CHANGE_CATALOG);
 		}
 	}
