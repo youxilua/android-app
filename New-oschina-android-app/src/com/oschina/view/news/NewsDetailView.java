@@ -22,7 +22,7 @@ public class NewsDetailView extends Fragment{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.news_detail, null, false);
+		return inflater.inflate(R.layout.osc_news_detail, null, false);
 	}
 	public NewsDetailsAction newsDetailsAction;
 	@Override
