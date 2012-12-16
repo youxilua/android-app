@@ -4,6 +4,7 @@
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content"
     android:descendantFocusability="blocksDescendants" 
+    android:background="@drawable/conversation_unread_selector"
     android:paddingLeft="6dip"
     android:paddingRight="6dip"
     android:paddingTop="8dip"
@@ -28,7 +29,7 @@
 	     	android:layout_height="wrap_content"
 	     	android:textStyle="bold"
 	     	android:textSize="@dimen/text_size_15"
-	     	android:textColor="@color/listitem_black"
+	     	android:textColor="@color/title_selector"
 	     	android:singleLine="true"/> 
 	    
    	</LinearLayout>
@@ -43,14 +44,14 @@
     		android:layout_width="wrap_content" 
            	android:layout_height="wrap_content" 
            	android:textSize="@dimen/text_size_10"
-            android:textColor="@color/listitem_gray"/>
+            android:textColor="@color/tips_unread_selector"/>
        	
        	<TextView
     		android:layout_width="wrap_content" 
            	android:layout_height="wrap_content" 
            	android:layout_marginLeft="10dip"
            	android:textSize="@dimen/text_size_10"
-            android:textColor="@color/listitem_gray"
+            android:textColor="@color/tips_unread_selector"
             android:text="发布于"/>
        	
        	<TextView android:id="@+id/news_listitem_date"  
@@ -58,7 +59,7 @@
            	android:layout_height="wrap_content"
            	android:layout_marginLeft="2dip" 
            	android:textSize="@dimen/text_size_10"
-            android:textColor="@color/listitem_gray"/>
+            android:textColor="@color/tips_unread_selector"/>
             
 	    <ImageView 
 	      	android:layout_width="wrap_content" 
@@ -72,7 +73,7 @@
            	android:layout_height="wrap_content" 
            	android:layout_marginLeft="3dip"
            	android:textSize="@dimen/text_size_10"
-            android:textColor="@color/listitem_gray"/>
+            android:textColor="@color/tips_unread_selector"/>
        	
     </LinearLayout>
 

@@ -86,7 +86,7 @@ public class BlogListAction extends ApiBaseAction {
 				UIHelper.showUrlRedirect(view.getContext(), blog.getUrl());
 			}
 			
-			lvBlog.setItemChecked(lvBlog.getCheckedItemPosition()-1, true);
+			lvBlog.setItemChecked(lvBlog.getCheckedItemPosition(), true);
 
 		}
 	};
@@ -155,7 +155,7 @@ public class BlogListAction extends ApiBaseAction {
 			}
 			if (blog == null)
 				return;
-			lvBlog.setItemChecked(position-1, true);
+			lvBlog.setItemChecked(position, true);
 			if(getActivity().getResources().getBoolean(R.bool.has_two_panes)){
 				UIAction.showUrlRedirect(getFragmentManager(), blog.getUrl());
 				isCheckPosition = position;

@@ -124,7 +124,7 @@ public class NewsListAction extends ApiBaseAction {
 			}else{
 				UIHelper.showNewsRedirect(view.getContext(), news);
 			}
-			lvNews.setItemChecked(lvNews.getCheckedItemPosition()-1, true);
+			lvNews.setItemChecked(lvNews.getCheckedItemPosition(), true);
 		}
 	};
 	
@@ -193,7 +193,7 @@ public class NewsListAction extends ApiBaseAction {
 			if (news == null)
 				return;
 			// 跳转到新闻详情
-			lvNews.setItemChecked(position-1, true);
+			lvNews.setItemChecked(position, true);
 			if(getActivity().getResources().getBoolean(R.bool.has_two_panes)){
 				UIAction.showNewsRedirect(getFragmentManager(), news);
 				isCheckPosition = position;
