@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import com.androidquery.AQuery;
 import com.oschina.controller.news.NewsDetailsAction;
-import com.oschina.view.R;
+import net.oschina.app.holo.R;
 
 /**
  * @author youxiachai

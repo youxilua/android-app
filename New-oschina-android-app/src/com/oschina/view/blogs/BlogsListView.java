@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import com.androidquery.AQuery;
 import com.oschina.controller.blogs.BlogListAction;
-import com.oschina.view.R;
+import net.oschina.app.holo.R;
 
 public class BlogsListView extends Fragment {
 	

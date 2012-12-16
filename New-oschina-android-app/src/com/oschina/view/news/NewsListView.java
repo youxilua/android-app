@@ -1,5 +1,6 @@
 package com.oschina.view.news;
 
+import net.oschina.app.holo.R;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,7 +9,6 @@ import android.view.ViewGroup;
 
 import com.androidquery.AQuery;
 import com.oschina.controller.news.NewsListAction;
-import com.oschina.view.R;
 
 public class NewsListView extends Fragment {
 	

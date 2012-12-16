@@ -6,7 +6,7 @@ import net.oschina.app.common.StringUtils;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 
-import com.oschina.view.R;
+import net.oschina.app.holo.R;
 import com.oschina.view.blogs.BlogDetailView;
 import com.oschina.view.news.NewsDetailView;
 

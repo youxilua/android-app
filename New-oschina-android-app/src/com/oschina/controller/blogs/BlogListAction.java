@@ -1,6 +1,7 @@
 package com.oschina.controller.blogs;
 
 import net.oschina.app.AppContext;
+import net.oschina.app.holo.R;
 import net.oschina.app.adapter.ListViewBlogAdapter;
 import net.oschina.app.bean.Blog;
 import net.oschina.app.bean.BlogList;
@@ -20,12 +21,13 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import net.oschina.app.*;
+
 import com.androidquery.AQuery;
 import com.oschina.controller.data.LvHanlderFactory;
 import com.oschina.controller.data.LvLoadData;
 import com.oschina.controller.main.UIAction;
 import com.oschina.model.LvData;
-import com.oschina.view.R;
 import com.youxilua.framework.action.ApiBaseAction;
 
 public class BlogListAction extends ApiBaseAction {

@@ -1,5 +1,6 @@
 package com.oschina.view;
 
+import net.oschina.app.holo.R;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
@@ -9,7 +10,6 @@ import com.androidquery.AQuery;
 import com.oschina.controller.main.HomeAction;
 import com.oschina.controller.main.MainAction;
 import com.oschina.controller.nav.ActionBarAction;
-import com.oschina.view.R;
 
 public class MainActivity extends FragmentActivity{
 

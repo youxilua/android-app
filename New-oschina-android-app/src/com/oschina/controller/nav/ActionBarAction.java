@@ -12,7 +12,7 @@ import android.support.v4.app.Fragment;
 import android.widget.ArrayAdapter;
 
 import com.androidquery.AQuery;
-import com.oschina.view.R;
+import net.oschina.app.holo.R;
 import com.oschina.view.blogs.BlogsListView;
 import com.oschina.view.news.NewsListView;
 import com.youxilua.framework.action.ApiBaseAction;

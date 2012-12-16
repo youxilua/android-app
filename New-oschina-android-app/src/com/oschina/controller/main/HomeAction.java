@@ -11,7 +11,7 @@ import android.widget.FrameLayout;
 
 import com.androidquery.AQuery;
 import com.youxilua.framework.action.ApiBaseAction;
-import com.oschina.view.R;
+import net.oschina.app.holo.R;
 
 public class HomeAction extends ApiBaseAction {
 	private final static int HOMEINDEX = 0;

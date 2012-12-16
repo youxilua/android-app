@@ -2,10 +2,9 @@ package com.oschina.controller.blogs;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import net.oschina.app.holo.R;
 import net.oschina.app.AppContext;
 import net.oschina.app.AppException;
-import net.oschina.app.R;
 import net.oschina.app.adapter.ListViewCommentAdapter;
 import net.oschina.app.bean.Blog;
 import net.oschina.app.bean.Comment;
@@ -19,13 +18,10 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.webkit.WebView;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.ScrollView;
 import android.widget.TextView;
-
+import net.oschina.app.holo.R;
 import com.androidquery.AQuery;
 import com.oschina.controller.data.LvLoadData;
 import com.youxilua.framework.action.ApiBaseAction;

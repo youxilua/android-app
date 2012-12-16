@@ -36,7 +36,7 @@ import android.widget.TextView;
 import com.androidquery.AQuery;
 import com.oschina.controller.data.LvLoadData;
 import com.oschina.model.LvData;
-import com.oschina.view.R;
+import net.oschina.app.holo.R;
 import com.youxilua.framework.action.ApiBaseAction;
 
 /**

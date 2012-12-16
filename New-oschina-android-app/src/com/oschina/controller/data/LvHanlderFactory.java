@@ -17,7 +17,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.oschina.model.LvData;
-import com.oschina.view.R;
+import net.oschina.app.holo.R;
 
 public class LvHanlderFactory extends Handler{
 

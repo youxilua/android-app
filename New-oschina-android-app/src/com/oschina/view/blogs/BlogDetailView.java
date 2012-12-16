@@ -2,7 +2,7 @@ package com.oschina.view.blogs;
 
 import com.androidquery.AQuery;
 import com.oschina.controller.blogs.BlogDetailAction;
-import com.oschina.view.R;
+import net.oschina.app.holo.R;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

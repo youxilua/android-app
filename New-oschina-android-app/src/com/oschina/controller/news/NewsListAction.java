@@ -26,7 +26,7 @@ import com.oschina.controller.data.LvHanlderFactory;
 import com.oschina.controller.data.LvLoadData;
 import com.oschina.controller.main.UIAction;
 import com.oschina.model.LvData;
-import com.oschina.view.R;
+import net.oschina.app.holo.R;
 import com.youxilua.framework.action.ApiBaseAction;
 
 public class NewsListAction extends ApiBaseAction {
