@@ -66,7 +66,7 @@ public class NewsListAction extends ApiBaseAction {
 				.findViewById(R.id.listview_foot_progress);
 		lvNews = (PullToRefreshListView) mActionQuery.id(lvId).getView();
 		lvNews.addFooterView(lvNews_footer);// 添加底部视图 必须在setAdapter前
-		lvNewsAdapter.setListView(lvNews);
+		//lvNewsAdapter.setListView(lvNews);
 		lvNews.setAdapter(lvNewsAdapter);
 	
 		lvNews.setChoiceMode(ListView.CHOICE_MODE_SINGLE);

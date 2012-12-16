@@ -189,7 +189,7 @@ public class BlogListAction extends ApiBaseAction {
 		lvBlog = (PullToRefreshListView) findViewById(lvId);
 		lvBlog.addFooterView(lvBlog_footer);// 添加底部视图 必须在setAdapter前
 		
-		lvBlogAdapter.setBlogListview(lvBlog);
+		//lvBlogAdapter.setBlogListview(lvBlog);
 		lvBlog.setAdapter(lvBlogAdapter);
 		
 		lvBlog.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
