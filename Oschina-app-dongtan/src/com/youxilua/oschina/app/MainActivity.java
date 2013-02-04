@@ -15,7 +15,6 @@ public class MainActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		FrameLayout fl = (FrameLayout) findViewById(android.R.id.custom);
 		
 		FragmentUtils.replaceDefault(android.R.id.custom, getSupportFragmentManager(), TweetApp.actionbar);
 		FragmentUtils.replaceDefault(android.R.id.empty, getSupportFragmentManager(), new TweetView());
