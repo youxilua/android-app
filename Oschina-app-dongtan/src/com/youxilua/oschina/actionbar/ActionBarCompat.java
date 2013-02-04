@@ -44,21 +44,26 @@ public class ActionBarCompat extends Fragment {
 	
 		// Ar
 		sp.setAdapter(adapter);
-		sp.setOnItemSelectedListener(new OnItemSelectedListener() {
+//		sp.setOnItemSelectedListener(new OnItemSelectedListener() {
+//
+//			@Override
+//			public void onItemSelected(AdapterView<?> arg0, View arg1,
+//					int arg2, long arg3) {
+//				// TODO Auto-generated method stub
+//			
+//				Toast.makeText(getActivity(), "pos-->" + arg3, Toast.LENGTH_SHORT).show();
+//			}
+//
+//			@Override
+//			public void onNothingSelected(AdapterView<?> arg0) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//		});
 
-			@Override
-			public void onItemSelected(AdapterView<?> arg0, View arg1,
-					int arg2, long arg3) {
-				// TODO Auto-generated method stub
-				Toast.makeText(getActivity(), "pos-->" + arg3, Toast.LENGTH_SHORT).show();
-			}
-
-			@Override
-			public void onNothingSelected(AdapterView<?> arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
-
+	}
+	
+	public Spinner getSpinner(){
+		return (Spinner) getView().findViewById(R.id.actList);
 	}
 }

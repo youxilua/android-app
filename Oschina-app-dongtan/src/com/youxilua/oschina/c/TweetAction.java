@@ -47,32 +47,21 @@ public class TweetAction extends ApiBaseAction {
 		tweetQuery = new AQuery(view);
 		lvTweetList = tweetQuery.id(android.R.id.list).getListView();
 		lvTweetList.setOnItemClickListener(tweetList);
-//		lta =new LvTweetAdpater(getActivity(), R.layout.item_lv_tweet);
-//		lta.setClickLisetener(new OnClickListener() {
-//			
-//			@Override
-//			public void onClick(View v) {
-//				// TODO Auto-generated method stub
-//				
-//				Toast.makeText(getActivity(), "pos" + v.getTag(), Toast.LENGTH_SHORT).show();
-//			}
-//		});
-		
 	}
 
-	public void setTweetList() {
+	public void setTweetList(int uid) {
 		TweetApp.actionbar.showProgress();
-		getTweetList();
+		getTweetList(uid);
 	}
 
-	private void getTweetList() {
-		getTweetList("0", "0", "20");
+	private void getTweetList(int uid) {
+		getTweetList(uid, "0", "20");
 	}
 
-	private void getTweetList(String uid, String pageIndex, String pageSize) {
+	private void getTweetList(int uid, String pageIndex, String pageSize) {
 		Bundle reqeust = new Bundle();
 		reqeust.putString(NetClient.NETQUERYURL, URLs.TWEET_LIST);
-		reqeust.putString("uid", uid);
+		reqeust.putString("uid", String.valueOf(uid));
 		reqeust.putString("pageIndex", pageIndex);
 		reqeust.putString("pageSize", pageSize);
 		if (ajaQuery == null) {
@@ -91,7 +80,7 @@ public class TweetAction extends ApiBaseAction {
 				TweetList tw = TweetList.parse(result);
 				lta = new LvTweetAdpater(getActivity(), tw.getTweetlist());
 				lvTweetList.setAdapter(lta);
-				lta.imageQuery.id(lvTweetList).scrolled(new OnScrollListener() {
+				lta.itemQy.id(lvTweetList).scrolled(new OnScrollListener() {
 					
 					@Override
 					public void onScrollStateChanged(AbsListView view, int scrollState) {

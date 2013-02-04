@@ -5,7 +5,6 @@ import java.util.List;
 import net.oschina.app.bean.Tweet;
 import net.oschina.app.common.StringUtils;
 import android.app.Activity;
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,10 +16,15 @@ import com.androidquery.callback.ImageOptions;
 import com.youxilua.dongtan.R;
 import com.youxilua.utils.debug.AppDebug;
 
+/**
+ * @author youxiachai
+ *
+ */
 public class LvTweetAdpater extends BaseAdapter {
 
 	private List<Tweet> tweetLv;
-	public AQuery imageQuery;
+	public AQuery itemQy;
+	private LayoutInflater mInflater;
 
 	private OnClickListener clickListener;
 
@@ -28,20 +32,18 @@ public class LvTweetAdpater extends BaseAdapter {
 		this.clickListener = clicker;
 	}
 
-	private Activity ctx;
 
 	public LvTweetAdpater(Activity ctx, List<Tweet> tweetLv) {
 		this.tweetLv = tweetLv;
-		this.ctx = ctx;
-		mFliater = ctx.getLayoutInflater();
-		imageQuery = new AQuery(ctx);
+		this.mInflater = ctx.getLayoutInflater();
+		this.itemQy = new AQuery(ctx);
 	}
 
-	LayoutInflater mFliater;
+	
 
 	public LvTweetAdpater(Activity ctx, int layout) {
-		imageQuery = new AQuery(ctx);
-		mFliater = ctx.getLayoutInflater();
+		itemQy = new AQuery(ctx);
+		mInflater = ctx.getLayoutInflater();
 	}
 
 	public void setData(List<Tweet> lvTweet) {
@@ -73,97 +75,95 @@ public class LvTweetAdpater extends BaseAdapter {
 	public void isInit(boolean is) {
 		this.isInit = is;
 	}
+	
+	/**回收机制,跟bitmap 的显示有问题
+	 * @param url
+	 * @param v
+	 */
+	private void setImageView(String url,View v){
+		if (isInit) {
+			if (url != null && !StringUtils.isEmpty(url)) {
 
+				ImageOptions io = new ImageOptions();
+				itemQy.id(v).image(url, io);
+
+			} else {
+				v.setVisibility(View.GONE);
+			}
+		}
+	}
+	
+
+	/* (non-Javadoc)
+	 * @see android.widget.Adapter#getView(int, android.view.View, android.view.ViewGroup)
+	 */
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// AQuery
 		View itemView = convertView;
-		ListItemView listItemView = null;
+		ItemView itemHolder = null;
 		Tweet tweet = tweetLv.get(position);
-		String image = tweet.getImgBig();
+		String faceURL = tweet.getFace();
+		String imageUrl = tweet.getImgBig();
 		if (itemView == null) {
 
-			itemView = mFliater.inflate(R.layout.item_lv_tweet, null);
+			itemView = mInflater.inflate(R.layout.item_lv_tweet, null);
 
-			listItemView = new ListItemView();
-			listItemView.userface = getItemView(itemView, R.id.tweetPortrait);
-			listItemView.username = getItemView(itemView, R.id.tweetName);
-			listItemView.body = getItemView(itemView, R.id.tweetBody);
-			listItemView.image = getItemView(itemView, R.id.tweetImage);
-			listItemView.date = getItemView(itemView, R.id.tweetBefore);
-			listItemView.commentCount = getItemView(itemView,
+			itemHolder = new ItemView();
+			itemHolder.userface = getItemView(itemView, R.id.tweetPortrait);
+			itemHolder.username = getItemView(itemView, R.id.tweetName);
+			itemHolder.body = getItemView(itemView, R.id.tweetBody);
+			itemHolder.image = getItemView(itemView, R.id.tweetImage);
+			itemHolder.date = getItemView(itemView, R.id.tweetBefore);
+			itemHolder.commentCount = getItemView(itemView,
 					R.id.tweetCommentCount);
-			listItemView.commentButton = getItemView(itemView,
+			itemHolder.commentButton = getItemView(itemView,
 					R.id.tweetCommentButton);
 
-			itemView.setTag(listItemView);
-
-			if (isInit) {
-				if (image != null && !StringUtils.isEmpty(image)) {
-					AppDebug.MethodLog(getClass(), "pos-->" + position
-							+ "image->" + image);
-
-					ImageOptions io = new ImageOptions();
-					imageQuery.id(listItemView.image).image(image, io);
-
-				} else {
-					listItemView.image.setVisibility(View.GONE);
-				}
-			}
+			itemView.setTag(itemHolder);
+			//加载大图片的时候需要主要跟缓存view 的回收显示问题
+			setImageView(imageUrl,itemHolder.image);
+			
 
 		} else {
-			listItemView = (ListItemView) itemView.getTag();
-			AppDebug.MethodLog(getClass(), "reuse-->" + position + "view"
-					+ itemView.getVisibility());
-
+			itemHolder = (ItemView) itemView.getTag();
 		}
-		AppDebug.MethodLog(getClass(), "noinit-->" + position + "view"
-				+ itemView.getVisibility());
+	
 		if (!isInit) {
-			if (image != null && !StringUtils.isEmpty(image)) {
-				
-				//Bitmap placeholder = imageQuery.getCachedImage(R.drawable.image_ph);
-
-				if (imageQuery.shouldDelay(position, itemView, parent, image)) {
+			if (imageUrl != null && !StringUtils.isEmpty(imageUrl)) {
+				if (itemQy.shouldDelay(position, itemView, parent, imageUrl)) {
 					AppDebug.MethodLog(getClass(), "pos-->delay" + position + "image->"
-							+ image);
-				//	imageQuery.id(listItemView.image).image(placeholder, 0.75f);
+							+ imageUrl);
 				} else {
 					AppDebug.MethodLog(getClass(), "pos-->nodelay" + position + "image->"
-							+ image);
+							+ imageUrl);
 					ImageOptions io = new ImageOptions();
-					imageQuery.id(listItemView.image).image(image, io);
+					itemQy.id(itemHolder.image).image(imageUrl, io);
 				}
-
-				
-
 			} else {
-				listItemView.image.setVisibility(View.GONE);
+				itemHolder.image.setVisibility(View.GONE);
 			}
 		}
 
-		String faceURL = tweet.getFace();
+	
 		if (faceURL.endsWith("portrait.gif") || StringUtils.isEmpty(faceURL)) {
-			imageQuery.id(listItemView.userface).image(R.drawable.widget_dface);
+			itemQy.id(itemHolder.userface).image(R.drawable.widget_dface);
 		} else {
-			imageQuery.id(listItemView.userface).image(faceURL);
+			if (!itemQy.shouldDelay(position, itemView, parent, faceURL)) {
+				itemQy.id(itemHolder.userface).image(faceURL);
+			}
+				
 		}
-		imageQuery.id(listItemView.userface).clicked(clickListener)
-				.tag(tweet.getAuthorId());
-		imageQuery.id(listItemView.username).text(tweet.getAuthor());
-
-		imageQuery.id(listItemView.body).text(tweet.getBody());
-
-		imageQuery.id(listItemView.date).text(
-				StringUtils.friendly_time(tweet.getPubDate()));
-		imageQuery.id(listItemView.commentCount).text(
-				String.valueOf(tweet.getCommentCount()));
-		imageQuery.id(listItemView.commentButton).clicked(clickListener)
-				.tag(position);
+		itemQy.id(itemHolder.userface).clicked(clickListener).tag(tweet.getAuthorId());
+		itemQy.id(itemHolder.username).text(tweet.getAuthor());
+		itemQy.id(itemHolder.body).text(tweet.getBody());
+		itemQy.id(itemHolder.date).text(StringUtils.friendly_time(tweet.getPubDate()));
+		itemQy.id(itemHolder.commentCount).text(String.valueOf(tweet.getCommentCount()));
+		itemQy.id(itemHolder.commentButton).clicked(clickListener).tag(position);
 		return itemView;
 	}
 
-	static class ListItemView { // 自定义控件集合
+	static class ItemView { // 自定义控件集合
 		public View userface;
 		public View username;
 		public View date;

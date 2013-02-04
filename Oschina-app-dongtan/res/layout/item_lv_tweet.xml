@@ -72,7 +72,7 @@
 
             <RelativeLayout
                  android:id="@+id/tweetCommentButton"
-                android:layout_width="60dp"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:gravity="center"
