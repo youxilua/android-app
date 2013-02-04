@@ -3,18 +3,19 @@
     package="com.youxilua.dongtan"
     android:versionCode="1"
     android:versionName="1.0" >
-
+  <uses-permission android:name="android.permission.INTERNET" />
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="14" />
 
     <application
         android:allowBackup="true"
+        android:name="com.youxilua.oschina.app.TweetApp"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.youxilua.oschina.dangtan.MainActivity"
+            android:name="com.youxilua.oschina.app.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
