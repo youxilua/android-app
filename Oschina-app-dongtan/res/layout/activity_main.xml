@@ -10,13 +10,15 @@
             android:layout_height="wrap_content" >
         </FrameLayout>
 
-    <FrameLayout
-        android:id="@android:id/empty"
+    <com.youxilua.page.EmbedViewPage
+        android:id="@android:id/background"
         android:layout_width="match_parent"
+        android:fadeScrollbars="false"
+        android:fadingEdge="none"  
         android:layout_height="match_parent" >
 
-     
+      
 
-    </FrameLayout>
+    </com.youxilua.page.EmbedViewPage>
 
 </LinearLayout>

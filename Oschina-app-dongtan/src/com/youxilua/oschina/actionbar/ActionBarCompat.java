@@ -5,17 +5,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.youxilua.dongtan.R;
 
 public class ActionBarCompat extends Fragment {
 
-	private static final String[] m = { "最新动弹", "最热动弹", "我的动弹" };
+	private static final String[] m = { "最新动弹", "最热动弹" };
 	private ArrayAdapter<String> adapter;
 
 	@Override
@@ -24,12 +21,20 @@ public class ActionBarCompat extends Fragment {
 		// TODO Auto-generated method stub
 		return inflater.inflate(R.layout.actbar_normal, null, false);
 	}
-	
-	public void showProgress(){
+
+	public void showSpinner() {
+		getView().findViewById(R.id.actList).setVisibility(View.VISIBLE);
+	}
+
+	public void hideSpinner() {
+		getView().findViewById(R.id.actList).setVisibility(View.GONE);
+	}
+
+	public void showProgress() {
 		getView().findViewById(R.id.actProgress).setVisibility(View.VISIBLE);
 	}
-	
-	public void hideProgress(){
+
+	public void hideProgress() {
 		getView().findViewById(R.id.actProgress).setVisibility(View.GONE);
 	}
 
@@ -37,33 +42,34 @@ public class ActionBarCompat extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		Spinner sp = (Spinner) getView().findViewById(R.id.actList);
-		adapter = new ArrayAdapter<String>(getActivity(),R.layout.item_spinner_title
-				,android.R.id.text1, m);
-		 //设置下拉列表的风格  
-   //    adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line); 
-	
+		adapter = new ArrayAdapter<String>(getActivity(),
+				R.layout.item_spinner_title, android.R.id.text1, m);
+		// 设置下拉列表的风格
+		// adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+
 		// Ar
 		sp.setAdapter(adapter);
-//		sp.setOnItemSelectedListener(new OnItemSelectedListener() {
-//
-//			@Override
-//			public void onItemSelected(AdapterView<?> arg0, View arg1,
-//					int arg2, long arg3) {
-//				// TODO Auto-generated method stub
-//			
-//				Toast.makeText(getActivity(), "pos-->" + arg3, Toast.LENGTH_SHORT).show();
-//			}
-//
-//			@Override
-//			public void onNothingSelected(AdapterView<?> arg0) {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//		});
+		// sp.setOnItemSelectedListener(new OnItemSelectedListener() {
+		//
+		// @Override
+		// public void onItemSelected(AdapterView<?> arg0, View arg1,
+		// int arg2, long arg3) {
+		// // TODO Auto-generated method stub
+		//
+		// Toast.makeText(getActivity(), "pos-->" + arg3,
+		// Toast.LENGTH_SHORT).show();
+		// }
+		//
+		// @Override
+		// public void onNothingSelected(AdapterView<?> arg0) {
+		// // TODO Auto-generated method stub
+		//
+		// }
+		// });
 
 	}
-	
-	public Spinner getSpinner(){
+
+	public Spinner getSpinner() {
 		return (Spinner) getView().findViewById(R.id.actList);
 	}
 }

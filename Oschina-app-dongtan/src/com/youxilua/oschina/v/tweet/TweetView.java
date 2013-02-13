@@ -20,7 +20,7 @@ public class TweetView extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.frg_tweet, null, false);
+		return inflater.inflate(R.layout.fgm_tweet, null, false);
 	}
 	public static final int LASETESTTWEET = 0;
 	public static final int HOTTWEET = -1;
@@ -34,6 +34,8 @@ public class TweetView extends Fragment {
 			public void onItemSelected(AdapterView<?> parent, View view,
 					int position, long id) {
 				// TODO Auto-generated method stub
+				
+				
 				switch (position) {
 				case LASETESTTWEET:
 					tweetAction.setTweetList(LASETESTTWEET);
