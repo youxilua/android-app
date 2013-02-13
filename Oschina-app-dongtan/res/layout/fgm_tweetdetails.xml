@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   >
+
+    <ImageView
+        android:id="@+id/tweetBigImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/bg_blue_tile" />
+
+    <SlidingDrawer
+        android:id="@+id/tweetDetailSlid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:content="@+id/content"
+        android:handle="@+id/handle" >
+
+        <LinearLayout
+            android:id="@+id/handle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white" >
+
+            <include layout="@layout/item_lv_tweet" />
+        </LinearLayout>
+
+        <include
+            android:id="@+id/content"
+            layout="@layout/slid_content" />
+    </SlidingDrawer>
+
+</RelativeLayout>
